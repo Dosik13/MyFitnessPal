@@ -1,0 +1,17 @@
+image: openjdk:17
+
+stages:
+  - build
+  - verify
+
+compile:
+  stage: build
+  script: ./gradlew compileJava compileTestJava
+
+unit test:
+  stage: verify
+  script: ./gradlew test
+
+checkstyle:
+  stage: verify
+  script: ./gradlew checkstyleMain checkstyleTest
