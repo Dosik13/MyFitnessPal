@@ -9,65 +9,80 @@ public class Exercise {
     private String[] equipment;
     private String difficulty;
 
-    public Exercise(String name, String description, String[] targetMuscles, String[] equipment, String difficulty) {
+    public Exercise(String name, String description, String[] targetMuscles,
+                    String[] equipment, String difficulty) {
         this.name = name;
         this.description = description;
         this.targetMuscles = targetMuscles;
         this.equipment = equipment;
         this.difficulty = difficulty;
     }
-    public String getName() {
+
+    public final String getName() {
         return name;
     }
-    public String getDescription() {
+
+    public final String getDescription() {
         return description;
     }
-    public String[] getTargetMuscles() {
+
+    public final String[] getTargetMuscles() {
         return targetMuscles;
     }
-    public int getSets() {
+
+    public final int getSets() {
         return sets;
     }
-    public int getReps() {
+
+    public final int getReps() {
         return reps;
     }
-    public String[] getEquipment() {
+
+    public final String[] getEquipment() {
         return equipment;
     }
-    public String getDifficulty() {
+
+    public final String getDifficulty() {
         return difficulty;
     }
-    public void setName(String name) {
+
+    public final void setName(String name) {
         this.name = name;
     }
-    public void setDescription(String description) {
+
+    public final void setDescription(String description) {
         this.description = description;
     }
-    public void setTargetMuscles(String[] targetMuscles) {
+
+    public final void setTargetMuscles(String[] targetMuscles) {
         this.targetMuscles = targetMuscles;
     }
-    public void setSets(int sets) {
-        if(sets < 1) {
+
+    public final void setSets(int sets) {
+        if (sets < 1) {
             throw new IllegalArgumentException("Sets must be greater than 0");
         }
-        if(sets > 100){
+        if (sets > 100) {
             throw new IllegalArgumentException("Sets must be less than 100");
         }
         this.sets = sets;
     }
-    public void setReps(int reps) {
-        if(reps < 1) {
+
+    public final void setReps(int reps) {
+        if (reps < 1) {
             throw new IllegalArgumentException("Reps must be greater than 0");
         }
-        if(reps > 1000){
+        if (reps > 1000) {
             throw new IllegalArgumentException("Reps must be less than 1000");
         }
         this.reps = reps;
     }
-    public void setEquipment(String[] equipment) {
+
+    public final void setEquipment(String[] equipment) {
         this.equipment = equipment;
     }
-    public void setDifficulty(String difficulty) {
+
+    public final void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
 
