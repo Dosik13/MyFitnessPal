@@ -2,10 +2,11 @@ package exercises;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 class ExerciseStorageTest {
     @Test
     void getExerciseByNameExistingNameReturnsExercise() {
@@ -14,7 +15,7 @@ class ExerciseStorageTest {
         Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
                 new String[]{"Back", "Biceps"},
                 new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(new Exercise[]{exercise1, exercise2});
+        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
         assertEquals(exercise1, storage.getExerciseByName("Push-ups"));
     }
     @Test
@@ -23,7 +24,7 @@ class ExerciseStorageTest {
                 new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
         Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
                 new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(new Exercise[]{exercise1, exercise2});
+        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
         assertNull(storage.getExerciseByName("Squats"));
     }
     @Test
@@ -32,7 +33,7 @@ class ExerciseStorageTest {
                 new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
         Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
                 new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(new Exercise[]{exercise1, exercise2});
+        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
         assertThrows(NullPointerException.class, () -> storage.getExerciseByName(null));
     }
     @Test
@@ -41,7 +42,7 @@ class ExerciseStorageTest {
                 new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
         Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
                 new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(new Exercise[]{exercise1, exercise2});
+        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
         storage.removeExercise(exercise1);
         assertNull(storage.getExerciseByName("Push-ups"));
     }
@@ -53,8 +54,8 @@ class ExerciseStorageTest {
                 new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
         Exercise exercise3 = new Exercise("Squats", "Squats description",
                 new String[]{"Legs"}, new String[]{"None"}, "Hard");
-        ExerciseStorage storage = new ExerciseStorage(new Exercise[]{exercise1, exercise2});
+        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
         storage.removeExercise(exercise3);
-        assertEquals(2, storage.getExercises().length);
+        assertEquals(2, storage.getExercises().size());
     }
 }
