@@ -1,61 +1,76 @@
+
 package exercises;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 class ExerciseStorageTest {
-    @Test
-    void getExerciseByNameExistingNameReturnsExercise() {
-        Exercise exercise1 = new Exercise("Push-ups", "Push-ups description",
+
+    private ExerciseStorage storage;
+    private Exercise exercise1;
+    private Exercise exercise2;
+
+    @BeforeEach
+    void setUp() {
+        exercise1 = new Exercise("Push-ups", "Push-ups description",
                 new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
-        Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
-                new String[]{"Back", "Biceps"},
-                new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
+        exercise2 = new Exercise("Pull-ups", "Pull-ups description",
+                new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
+        storage = new ExerciseStorage(new ArrayList<>(Arrays.asList(exercise1, exercise2)));
+    }
+
+    @Test
+    void addExercise() {
+        storage.addExercise(exercise2);
+        assertTrue(storage.getExercises().contains(exercise2));
+    }
+
+    @Test
+    void addExerciseThrowsIllegalArgumentException() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            storage.addExercise(null);
+        });
+        assertEquals("Exercise cannot be null", exception.getMessage());
+    }
+
+    @Test
+    void removeExercise() {
+        storage.removeExercise(exercise1);
+        assertFalse(storage.getExercises().contains(exercise1));
+    }
+
+    @Test
+    void removeExerciseThrowsIllegalArgumentException() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            storage.removeExercise(null);
+        });
+        assertEquals("Exercise cannot be null", exception.getMessage());
+    }
+
+    @Test
+    void getExerciseByName() {
         assertEquals(exercise1, storage.getExerciseByName("Push-ups"));
     }
+
     @Test
-    void getExerciseByNameNonExistingNameReturnsNull() {
-        Exercise exercise1 = new Exercise("Push-ups", "Push-ups description",
-                new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
-        Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
-                new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
-        assertNull(storage.getExerciseByName("Squats"));
+    void getExerciseByNameWithNonExistingName() {
+        assertNull(storage.getExerciseByName("Non-existing name"));
     }
+
     @Test
-    void getExerciseByNameNullNameThrowsException() {
-        Exercise exercise1 = new Exercise("Push-ups", "Push-ups description",
-                new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
-        Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
-                new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
-        assertThrows(NullPointerException.class, () -> storage.getExerciseByName(null));
-    }
-    @Test
-    void removeExerciseExistingExerciseRemovesExercise() {
-        Exercise exercise1 = new Exercise("Push-ups", "Push-ups description",
-                new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
-        Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
-                new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
-        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
-        storage.removeExercise(exercise1);
-        assertNull(storage.getExerciseByName("Push-ups"));
-    }
-    @Test
-    void removeExerciseNonExistingExerciseKeepsOriginalExercises() {
-        Exercise exercise1 = new Exercise("Push-ups", "Push-ups description",
-                new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
-        Exercise exercise2 = new Exercise("Pull-ups", "Pull-ups description",
-                new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
-        Exercise exercise3 = new Exercise("Squats", "Squats description",
-                new String[]{"Legs"}, new String[]{"None"}, "Hard");
-        ExerciseStorage storage = new ExerciseStorage(Arrays.asList(exercise1, exercise2));
-        storage.removeExercise(exercise3);
-        assertEquals(2, storage.getExercises().size());
+    void getExerciseByNameThrowsIllegalArgumentException() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            storage.getExerciseByName(null);
+        });
+        assertEquals("Name cannot be null", exception.getMessage());
     }
 }
