@@ -17,8 +17,8 @@ class FoodStorageTest {
 
     @BeforeEach
     public void setup() {
-        apple = new Food("Apple", "Brand1", "ServingSize1", 1, 100, 10, 2, 0);
-        banana = new Food("Banana", "Brand2", "ServingSize2", 2, 200, 20, 4, 0);
+        apple = new Food("Apple", "Brand1", "ServingSize1", 1, 100, 10, 2);
+        banana = new Food("Banana", "Brand2", "ServingSize2", 2, 200, 20, 4);
         List<Food> foods = new ArrayList<>();
         foods.add(apple);
         foodStorage = new FoodStorage(foods);

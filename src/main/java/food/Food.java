@@ -9,10 +9,9 @@ public class Food {
     private int calories;
     private int totalFat;
     private int saturatedFat;
-    private int transFat;
 
     public Food(String brandName, String description, String servingSize, int servingsPerContainer, int calories,
-                int totalFat, int saturatedFat, int transFat) {
+                int totalFat, int saturatedFat) {
         this.brandName = brandName;
         this.description = description;
         this.servingSize = servingSize;
@@ -20,7 +19,6 @@ public class Food {
         this.calories = calories;
         this.totalFat = totalFat;
         this.saturatedFat = saturatedFat;
-        this.transFat = transFat;
     }
 
     public final String getBrandName() {
@@ -51,10 +49,6 @@ public class Food {
         return saturatedFat;
     }
 
-    public final int getTransFat() {
-        return transFat;
-    }
-
     public final void setBrandName(String brandName) {
         this.brandName = brandName;
     }
@@ -83,7 +77,4 @@ public class Food {
         this.saturatedFat = saturatedFat;
     }
 
-    public final void setTransFat(int transFat) {
-        this.transFat = transFat;
-    }
 }
