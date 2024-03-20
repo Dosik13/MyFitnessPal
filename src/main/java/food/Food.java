@@ -1,15 +1,15 @@
 package food;
 
 public class Food {
-    String brandName;
-    String description;
-    String servingSize;
-    int servingsPerContainer;
+    private String brandName;
+    private String description;
+    private String servingSize;
+    private int servingsPerContainer;
 
-    int calories;
-    int totalFat;
-    int saturatedFat;
-    int transFat;
+    private int calories;
+    private int totalFat;
+    private int saturatedFat;
+    private int transFat;
 
     public Food(String brandName, String description, String servingSize, int servingsPerContainer, int calories,
                 int totalFat, int saturatedFat, int transFat) {
@@ -86,5 +86,4 @@ public class Food {
     public final void setTransFat(int transFat) {
         this.transFat = transFat;
     }
-
 }
