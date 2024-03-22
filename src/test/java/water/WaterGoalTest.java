@@ -18,7 +18,7 @@ public class WaterGoalTest {
     }
 
     @BeforeEach
-    void reset() {
+    final void reset() {
         waterGoal.setGoal(0);
         waterGoal.setCurrent(0);
     }

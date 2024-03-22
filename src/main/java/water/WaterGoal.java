@@ -16,42 +16,42 @@ public class WaterGoal {
         this.current = 0;
     }
 
-    public boolean goalIsReached() {
+    public final boolean goalIsReached() {
         return current >= goal;
     }
 
-    public void addWaterConsumption(int amount) {
+    public final void addWaterConsumption(int amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("amount cannot be negative");
         }
         current += amount;
     }
 
-    public void addWaterConsumptionSmallCup() {
+    public final void addWaterConsumptionSmallCup() {
         current += SMALL_SIZE_CUP;
     }
 
-    public void addWaterConsumptionMediumCup() {
+    public final void addWaterConsumptionMediumCup() {
         current += MEDIUM_SIZE_CUP;
     }
 
-    public void addWaterConsumptionLargeCup() {
+    public final void addWaterConsumptionLargeCup() {
         current += LARGE_SIZE_CUP;
     }
 
-    public int getCurrent() {
+    public final int getCurrent() {
         return current;
     }
 
-    public int getGoal() {
+    public final int getGoal() {
         return goal;
     }
 
-    public void setCurrent(int newValue) {
+    public final void setCurrent(int newValue) {
         current = newValue;
     }
 
-    public void setGoal(int newValue) {
+    public final void setGoal(int newValue) {
         goal = newValue;
     }
 }
