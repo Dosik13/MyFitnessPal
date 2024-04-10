@@ -1,28 +1,139 @@
 package food;
 
 public class Food {
-    private String brandName;
+    private String name;
     private String description;
     private String servingSize;
     private int servingsPerContainer;
-
     private int calories;
     private int totalFat;
     private int saturatedFat;
+    private int polyunsaturatedFat;
+    private int monounsaturatedFat;
+    private int transFat;
+    private int protein;
+    private int cholesterol;
+    private int carbohydrates;
+    private int dietaryFiber;
+    private int sugars;
 
-    public Food(String brandName, String description, String servingSize, int servingsPerContainer, int calories,
-                int totalFat, int saturatedFat) {
-        this.brandName = brandName;
-        this.description = description;
-        this.servingSize = servingSize;
-        this.servingsPerContainer = servingsPerContainer;
-        this.calories = calories;
-        this.totalFat = totalFat;
-        this.saturatedFat = saturatedFat;
+    private Food(Builder builder) {
+        this.name = builder.name;
+        this.description = builder.description;
+        this.servingSize = builder.servingSize;
+        this.servingsPerContainer = builder.servingsPerContainer;
+        this.calories = builder.calories;
+        this.totalFat = builder.totalFat;
+        this.saturatedFat = builder.saturatedFat;
+        this.polyunsaturatedFat = builder.polyunsaturatedFat;
+        this.monounsaturatedFat = builder.monounsaturatedFat;
+        this.transFat = builder.transFat;
+        this.protein = builder.protein;
+        this.cholesterol = builder.cholesterol;
+        this.carbohydrates = builder.carbohydrates;
+        this.dietaryFiber = builder.dietaryFiber;
+        this.sugars = builder.sugars;
     }
 
-    public final String getBrandName() {
-        return brandName;
+    public static class Builder {
+        private String name;
+        private String description;
+        private String servingSize;
+        private int servingsPerContainer;
+        private int calories;
+        private int totalFat;
+        private int saturatedFat;
+        private int polyunsaturatedFat;
+        private int monounsaturatedFat;
+        private int transFat;
+        private int protein;
+        private int cholesterol;
+        private int carbohydrates;
+        private int dietaryFiber;
+        private int sugars;
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder setServingSize(String servingSize) {
+            this.servingSize = servingSize;
+            return this;
+        }
+
+        public Builder setServingsPerContainer(int servingsPerContainer) {
+            this.servingsPerContainer = servingsPerContainer;
+            return this;
+        }
+
+        public Builder setCalories(int calories) {
+            this.calories = calories;
+            return this;
+        }
+
+        public Builder setTotalFat(int totalFat) {
+            this.totalFat = totalFat;
+            return this;
+        }
+
+        public Builder setSaturatedFat(int saturatedFat) {
+            this.saturatedFat = saturatedFat;
+            return this;
+        }
+
+        public Builder setPolyunsaturatedFat(int polyunsaturatedFat) {
+            this.polyunsaturatedFat = polyunsaturatedFat;
+            return this;
+        }
+
+        public Builder setMonounsaturatedFat(int monounsaturatedFat) {
+            this.monounsaturatedFat = monounsaturatedFat;
+            return this;
+        }
+
+        public Builder setTransFat(int transFat) {
+            this.transFat = transFat;
+            return this;
+        }
+
+        public Food build() {
+            return new Food(this);
+        }
+
+        public Builder setProtein(int protein) {
+            this.protein = protein;
+            return this;
+        }
+
+        public Builder setCholesterol(int cholesterol) {
+            this.cholesterol = cholesterol;
+            return this;
+        }
+
+        public Builder setCarbohydrates(int carbohydrates) {
+            this.carbohydrates = carbohydrates;
+            return this;
+        }
+
+        public Builder setDietaryFiber(int dietaryFiber) {
+            this.dietaryFiber = dietaryFiber;
+            return this;
+        }
+
+        public Builder setSugars(int sugars) {
+            this.sugars = sugars;
+            return this;
+        }
+    }
+
+    public final String getName() {
+        return name;
     }
 
     public final String getDescription() {
@@ -49,32 +160,35 @@ public class Food {
         return saturatedFat;
     }
 
-    public final void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public final int getPolyunsaturatedFat() {
+        return polyunsaturatedFat;
     }
 
-    public final void setDescription(String description) {
-        this.description = description;
+    public final int getMonounsaturatedFat() {
+        return monounsaturatedFat;
     }
 
-    public final void setServingSize(String servingSize) {
-        this.servingSize = servingSize;
+    public final int getTransFat() {
+        return transFat;
     }
 
-    public final void setServingsPerContainer(int servingsPerContainer) {
-        this.servingsPerContainer = servingsPerContainer;
+    public final int getProtein() {
+        return protein;
     }
 
-    public final void setCalories(int calories) {
-        this.calories = calories;
+    public final int getCholesterol() {
+        return cholesterol;
     }
 
-    public final void setTotalFat(int totalFat) {
-        this.totalFat = totalFat;
+    public final int getCarbohydrates() {
+        return carbohydrates;
     }
 
-    public final void setSaturatedFat(int saturatedFat) {
-        this.saturatedFat = saturatedFat;
+    public final int getDietaryFiber() {
+        return dietaryFiber;
     }
 
+    public final int getSugars() {
+        return sugars;
+    }
 }

@@ -13,10 +13,6 @@ public class FoodStorage {
         return foods;
     }
 
-    public final void setFoods(List<Food> foods) {
-        this.foods = foods;
-    }
-
     public final void addFood(Food food) {
         if (food == null) {
             throw new IllegalArgumentException("Food cannot be null");
@@ -31,12 +27,12 @@ public class FoodStorage {
         foods.remove(food);
     }
 
-    public final Food getFoodByBrandName(String brandName) {
-        if (brandName == null) {
-            throw new IllegalArgumentException("Brand name cannot be null");
+    public final Food getFoodByName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException(" name cannot be null");
         }
         for (Food food : foods) {
-            if (food.getBrandName().equals(brandName)) {
+            if (food.getName().equals(name)) {
                 return food;
             }
         }
