@@ -29,20 +29,20 @@ public class RoutineElement {
 
     public final void setSets(int sets) {
         if (sets < 1) {
-            throw new IllegalArgumentException("Sets must be greater than 0");
+            throw new IllegalArgumentException(Messages.SETS_MUST_BE_GREATER_THAN_0);
         }
         if (sets > 100) {
-            throw new IllegalArgumentException("Sets must be less than 100");
+            throw new IllegalArgumentException(Messages.SETS_MUST_BE_LESS_THAN_100);
         }
         this.sets = sets;
     }
 
     public final void setReps(int reps) {
         if (reps < 1) {
-            throw new IllegalArgumentException("Reps must be greater than 0");
+            throw new IllegalArgumentException(Messages.REPS_MUST_BE_GREATER_THAN_0);
         }
         if (reps > 1000) {
-            throw new IllegalArgumentException("Reps must be less than 1000");
+            throw new IllegalArgumentException(Messages.REPS_MUST_BE_LESS_THAN_1000);
         }
         this.reps = reps;
     }

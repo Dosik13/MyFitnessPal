@@ -12,10 +12,10 @@ public class RoutineEngine {
     }
 
     public final Routine addRoutine() {
-        System.out.println("Enter routine name:");
+        System.out.println(Messages.ENTER_ROUTINE_NAME);
         String name = scanner.nextLine();
 
-        System.out.println("Enter routine instructions:");
+        System.out.println(Messages.ENTER_ROUTINE_INSTRUCTIONS);
         String instructions = scanner.nextLine();
 
         return new Routine(name, instructions);
@@ -23,28 +23,28 @@ public class RoutineEngine {
 
     public final void addExercisesToRoutine(Routine routine) {
         while (true) {
-            System.out.println("Enter the name of the exercise (or 'quit' to finish):");
+            System.out.println(Messages.ENTER_EXERCISE_NAME);
             String exerciseName = scanner.nextLine();
 
-            if ("quit".equalsIgnoreCase(exerciseName)) {
+            if (Messages.QUIT.equalsIgnoreCase(exerciseName)) {
                 break;
             }
 
             Exercise exercise = exerciseStorage.getExerciseByName(exerciseName);
             if (exercise == null) {
-                System.out.println("Exercise not found. Please try again.");
+                System.out.println(Messages.EXERCISE_NOT_FOUND);
                 continue;
             }
 
-            System.out.println("Enter number of sets: ");
+            System.out.println(Messages.ENTER_NUMBER_OF_SETS);
             int sets = Integer.parseInt(scanner.nextLine());
 
-            System.out.println("Enter number of reps: ");
+            System.out.println(Messages.ENTER_NUMBER_OF_REPS);
             int reps = Integer.parseInt(scanner.nextLine());
 
             Integer kg = null;
             if (exercise.getKg() != null) {
-                System.out.println("Enter weight in kg (leave blank if not applicable): ");
+                System.out.println(Messages.ENTER_WEIGHT_IN_KG);
                 String kgInput = scanner.nextLine();
                 if (!kgInput.isEmpty()) {
                     kg = Integer.parseInt(kgInput);
@@ -60,7 +60,7 @@ public class RoutineEngine {
     public final Routine createRoutine() {
         Routine routine = addRoutine();
         addExercisesToRoutine(routine);
-        System.out.println("Routine created successfully.");
+        System.out.println(Messages.ROUTINE_CREATED);
         return routine;
     }
 }

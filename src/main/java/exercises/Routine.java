@@ -45,21 +45,21 @@ public class Routine {
 
     public final void addElement(RoutineElement element) {
         if (element == null) {
-            throw new IllegalArgumentException("Element cannot be null");
+            throw new IllegalArgumentException(Messages.ROUTINE_ELEMENT_CANNOT_BE_NULL);
         }
         elements.add(element);
     }
 
     public final void removeElement(RoutineElement element) {
         if (element == null) {
-            throw new IllegalArgumentException("Element cannot be null");
+            throw new IllegalArgumentException(Messages.ROUTINE_ELEMENT_CANNOT_BE_NULL);
         }
         elements.remove(element);
     }
 
     public final RoutineElement getElementByName(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("Name cannot be null");
+            throw new IllegalArgumentException(Messages.ROUTINE_ELEMENT_NAME_CANNOT_BE_NULL);
         }
 
         for (RoutineElement element : elements) {

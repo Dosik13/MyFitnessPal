@@ -17,7 +17,7 @@ public class RoutineStorage {
 
     public final boolean removeRoutineByName(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("Name cannot be null");
+            throw new IllegalArgumentException(Messages.ROUTINE_NAME_CANNOT_BE_NULL);
         }
 
         for (Routine routine : routines) {
@@ -32,7 +32,7 @@ public class RoutineStorage {
 
     public final Routine getRoutineByName(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("Name cannot be null");
+            throw new IllegalArgumentException(Messages.ROUTINE_NAME_CANNOT_BE_NULL);
         }
 
         for (Routine routine : routines) {
