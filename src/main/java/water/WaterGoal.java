@@ -1,57 +1,114 @@
 package water;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UncheckedIOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Map;
+
 public class WaterGoal {
-    private int goal;
-    private int current;
 
     private static final int SMALL_SIZE_CUP = 100;
     private static final int MEDIUM_SIZE_CUP = 250;
     private static final int LARGE_SIZE_CUP = 500;
 
-    public WaterGoal(int goal) {
-        if (goal < 0) {
-            throw new IllegalArgumentException("goal cannot be negative");
+    private final WaterStorage waterStorage;
+    private final InputStream inputStream;
+
+    public WaterGoal(int goalMl) {
+        this(goalMl, System.in);
+    }
+
+    public WaterGoal(int goalMl, InputStream inputStream) {
+        waterStorage = new WaterStorage(goalMl);
+        this.inputStream = inputStream;
+    }
+
+    public final void printAllLogs() {
+        for (Map.Entry<LocalDate, Integer> entry : waterStorage.getWaterLogStorage().entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue() + " ml");
         }
-        this.goal = goal;
-        this.current = 0;
     }
 
-    public final boolean goalIsReached() {
-        return current >= goal;
+    public static void main(String[] args) {
+        WaterGoal waterGoal = new WaterGoal(1000);
+        waterGoal.logFromUser();
+        waterGoal.logFromUser();
+        waterGoal.printAllLogs();
+    }
+    public final void logFromUser() {
+        int amount;
+        try {
+            amount = getAmountFromUser();
+        } catch (IOException e) {
+            throw new UncheckedIOException("Unexpected exception while reading drink amount", e);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Unexpected value");
+            return;
+        }
+
+        LocalDate localDate;
+        try {
+            localDate = getDateFromUser();
+        } catch (IOException e) {
+            throw new UncheckedIOException("Unexpected exception while reading date", e);
+        } catch (DateTimeParseException e) {
+            System.out.println("The date was not in the correct format");
+            return;
+        }
+        waterStorage.logWater(amount, localDate);
     }
 
-    public final void addWaterConsumption(int amount) {
+    private int getAmountFromUser() throws IOException {
+        System.out.println("Enter water drink amount to log:");
+        System.out.println("1." + SMALL_SIZE_CUP + " ml");
+        System.out.println("2." + MEDIUM_SIZE_CUP + " ml");
+        System.out.println("3." + LARGE_SIZE_CUP + " ml");
+        System.out.println("4. Other");
+
+        String request;
+        BufferedReader reader = new BufferedReader(
+            new InputStreamReader(inputStream));
+        request = reader.readLine();
+
+        int amount = switch (request) {
+            case "1" -> SMALL_SIZE_CUP;
+            case "2" -> MEDIUM_SIZE_CUP;
+            case "3" -> LARGE_SIZE_CUP;
+            case "4" -> -1;
+            default -> throw new IllegalArgumentException("Unexpected value");
+        };
+
+        if (amount == -1) {
+            System.out.println("Enter drink amount");
+            amount = Integer.parseInt(reader.readLine());
+        }
         if (amount < 0) {
-            throw new IllegalArgumentException("amount cannot be negative");
+            throw new IllegalArgumentException("amount was negative");
         }
-        current += amount;
+        return amount;
     }
 
-    public final void addWaterConsumptionSmallCup() {
-        current += SMALL_SIZE_CUP;
+    private LocalDate getDateFromUser() throws IOException {
+        System.out.println("Enter DD-MM-YYYY to log");
+        BufferedReader reader = new BufferedReader(
+            new InputStreamReader(inputStream));
+        String request = reader.readLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("[dd-MM-yyyy][d-M-yyyy]");
+        return LocalDate.parse(request, formatter);
     }
 
-    public final void addWaterConsumptionMediumCup() {
-        current += MEDIUM_SIZE_CUP;
+    public final void printLogForDay(LocalDate localDate) {
+        if (waterStorage.getWaterLogStorage().containsKey(localDate)) {
+            System.out.println(
+                "Water drunk on " + localDate + " - " + waterStorage.getWaterLogStorage().get(localDate) + " ml");
+        } else {
+            System.out.println("No logs for the given day");
+        }
     }
 
-    public final void addWaterConsumptionLargeCup() {
-        current += LARGE_SIZE_CUP;
-    }
-
-    public final int getCurrent() {
-        return current;
-    }
-
-    public final int getGoal() {
-        return goal;
-    }
-
-    public final void setCurrent(int newValue) {
-        current = newValue;
-    }
-
-    public final void setGoal(int newValue) {
-        goal = newValue;
-    }
 }
