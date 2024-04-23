@@ -19,7 +19,7 @@ public class ExerciseStorage {
 
     public final void addExercise(Exercise exercise) {
         if (exercise == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Messages.EXERCISE_CANNOT_BE_NULL);
         }
         exercises.add(exercise);
     }

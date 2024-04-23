@@ -38,7 +38,7 @@ class ExerciseStorageTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             storage.addExercise(null);
         });
-        assertEquals("Exercise cannot be null", exception.getMessage());
+        assertEquals(Messages.EXERCISE_CANNOT_BE_NULL, exception.getMessage());
     }
 
     @Test
@@ -52,7 +52,7 @@ class ExerciseStorageTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             storage.removeExercise(null);
         });
-        assertEquals("Exercise cannot be null", exception.getMessage());
+        assertEquals(Messages.EXERCISE_CANNOT_BE_NULL, exception.getMessage());
     }
 
     @Test
@@ -70,6 +70,6 @@ class ExerciseStorageTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             storage.getExerciseByName(null);
         });
-        assertEquals("Name cannot be null", exception.getMessage());
+        assertEquals(Messages.EXERCISE_NAME_CANNOT_BE_NULL, exception.getMessage());
     }
 }
