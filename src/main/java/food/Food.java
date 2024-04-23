@@ -1,6 +1,6 @@
 package food;
 
-public class Food {
+public final class Food {
     private String name;
     private String description;
     private String servingSize;
@@ -52,84 +52,85 @@ public class Food {
         private int dietaryFiber;
         private int sugars;
 
-        public Builder setName(String name) {
+        public final Builder setName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder setDescription(String description) {
+        public final Builder setDescription(String description) {
             this.description = description;
             return this;
         }
 
-        public Builder setServingSize(String servingSize) {
+        public final Builder setServingSize(String servingSize) {
             this.servingSize = servingSize;
             return this;
         }
 
-        public Builder setServingsPerContainer(int servingsPerContainer) {
+        public final Builder setServingsPerContainer(int servingsPerContainer) {
             this.servingsPerContainer = servingsPerContainer;
             return this;
         }
 
-        public Builder setCalories(int calories) {
+        public final Builder setCalories(int calories) {
             this.calories = calories;
             return this;
         }
 
-        public Builder setTotalFat(int totalFat) {
+        public final Builder setTotalFat(int totalFat) {
             this.totalFat = totalFat;
             return this;
         }
 
-        public Builder setSaturatedFat(int saturatedFat) {
+        public final Builder setSaturatedFat(int saturatedFat) {
             this.saturatedFat = saturatedFat;
             return this;
         }
 
-        public Builder setPolyunsaturatedFat(int polyunsaturatedFat) {
+        public final Builder setPolyunsaturatedFat(int polyunsaturatedFat) {
             this.polyunsaturatedFat = polyunsaturatedFat;
             return this;
         }
 
-        public Builder setMonounsaturatedFat(int monounsaturatedFat) {
+        public final Builder setMonounsaturatedFat(int monounsaturatedFat) {
             this.monounsaturatedFat = monounsaturatedFat;
             return this;
         }
 
-        public Builder setTransFat(int transFat) {
+        public final Builder setTransFat(int transFat) {
             this.transFat = transFat;
             return this;
         }
 
-        public Food build() {
-            return new Food(this);
-        }
-
-        public Builder setProtein(int protein) {
+        public final Builder setProtein(int protein) {
             this.protein = protein;
             return this;
         }
 
-        public Builder setCholesterol(int cholesterol) {
+        public final Builder setCholesterol(int cholesterol) {
             this.cholesterol = cholesterol;
             return this;
         }
 
-        public Builder setCarbohydrates(int carbohydrates) {
+        public final Builder setCarbohydrates(int carbohydrates) {
             this.carbohydrates = carbohydrates;
             return this;
         }
 
-        public Builder setDietaryFiber(int dietaryFiber) {
+        public final Builder setDietaryFiber(int dietaryFiber) {
             this.dietaryFiber = dietaryFiber;
             return this;
         }
 
-        public Builder setSugars(int sugars) {
+        public final Builder setSugars(int sugars) {
             this.sugars = sugars;
             return this;
         }
+
+        public final Food build() {
+            return new Food(this);
+        }
+
     }
 
     public final String getName() {

@@ -2,8 +2,10 @@ package food;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -18,12 +20,16 @@ class FoodStorageTest {
     @BeforeEach
     public void setup() {
         apple = new Food.Builder().setName("Apple").setDescription("Apple description")
-                .setServingSize("1 medium apple").setServingsPerContainer(1).setCalories(95)
-                .setTotalFat(0).setSaturatedFat(0).setPolyunsaturatedFat(0).setMonounsaturatedFat(0)
-                .setTransFat(0).setCarbohydrates(25).setDietaryFiber(4).setSugars(19).setProtein(1).setCholesterol(0).build();
-        banana = new Food.Builder().setName("Banana").setDescription("Banana description").setServingSize("1 medium banana")
+            .setServingSize("1 medium apple").setServingsPerContainer(1).setCalories(95)
+            .setTotalFat(0).setSaturatedFat(0).setPolyunsaturatedFat(0).setMonounsaturatedFat(0)
+            .setTransFat(0).setCarbohydrates(25).setDietaryFiber(4).setSugars(19).setProtein(1).setCholesterol(0)
+            .build();
+        banana =
+            new Food.Builder().setName("Banana").setDescription("Banana description").setServingSize("1 medium banana")
                 .setServingsPerContainer(1).setCalories(105).setTotalFat(0).setSaturatedFat(0).setPolyunsaturatedFat(0)
-                .setMonounsaturatedFat(0).setTransFat(0).setCarbohydrates(27).setDietaryFiber(3).setSugars(14).setProtein(1).setCholesterol(0).build();
+                .setMonounsaturatedFat(0).setTransFat(0).setCarbohydrates(27).setDietaryFiber(3).setSugars(14)
+                .setProtein(1)
+                .setCholesterol(0).build();
         List<Food> foods = new ArrayList<>();
         foods.add(apple);
         foods.add(banana);
