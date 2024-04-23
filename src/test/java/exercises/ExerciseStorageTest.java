@@ -21,9 +21,9 @@ class ExerciseStorageTest {
     @BeforeEach
     void setUp() {
         exercise1 = new Exercise("Push-ups", "Push-ups description",
-                List.of(Muscle.CHEST, Muscle.TRICEPS), List.of("None"), Difficulty.EASY);
+                List.of(Muscle.CHEST, Muscle.TRICEPS), List.of("None"), Exercise.Difficulty.EASY);
         exercise2 = new Exercise("Pull-ups", "Pull-ups description",
-                List.of(Muscle.LOWER_BACK, Muscle.BICEPS), List.of("None"), Difficulty.MEDIUM);
+                List.of(Muscle.LOWER_BACK, Muscle.BICEPS), List.of("None"), Exercise.Difficulty.MEDIUM);
         storage = new ExerciseStorage(new ArrayList<>(Arrays.asList(exercise1, exercise2)));
     }
 

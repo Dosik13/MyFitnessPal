@@ -31,18 +31,6 @@ public class Routine {
         return elements;
     }
 
-    public final void setName(String name) {
-        this.name = name;
-    }
-
-    public final void setInstructions(String instructions) {
-        this.instructions = instructions;
-    }
-
-    public final void setElements(List<RoutineElement> elements) {
-        this.elements = elements;
-    }
-
     public final void addElement(RoutineElement element) {
         if (element == null) {
             throw new IllegalArgumentException(Messages.ROUTINE_ELEMENT_CANNOT_BE_NULL);

@@ -34,44 +34,31 @@ public class Exercise {
         return kg;
     }
 
-    public final String getDescription() {
-        return description;
-    }
-
-    public final List<Muscle> getTargetMuscles() {
-        return targetMuscles;
-    }
-
-    public final List<String> getEquipment() {
-        return equipment;
-    }
-
-    public final Difficulty getDifficulty() {
-        return difficulty;
-    }
-
     public final void setName(String name) {
         this.name = name;
-    }
-
-    public final void setDescription(String description) {
-        this.description = description;
-    }
-
-    public final void setTargetMuscles(List<Muscle> targetMuscles) {
-        this.targetMuscles = targetMuscles;
     }
 
     public final void setKg(Integer kg) {
         this.kg = kg;
     }
 
-    public final void setEquipment(List<String> equipment) {
-        this.equipment = equipment;
-    }
+    public enum Difficulty {
+        EASY("easy"),
+        MEDIUM("medium"),
+        HARD("hard"),
+        INTERMEDIATE("intermediate"),
+        EXTREME("extreme");
 
-    public final void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
+        private final String value;
+
+        Difficulty(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
     }
 
 }

@@ -20,7 +20,7 @@ class RoutineTest {
     void setUp() {
         routine = new Routine("Morning Routine", "Do this every morning");
         exercise = new Exercise("Push-ups", "Push-ups description",
-                List.of(Muscle.CHEST, Muscle.TRICEPS), List.of("None"), Difficulty.EASY);
+                List.of(Muscle.CHEST, Muscle.TRICEPS), List.of("None"), Exercise.Difficulty.EASY);
         routineElement = new RoutineElement(exercise, 10, 3);
     }
 

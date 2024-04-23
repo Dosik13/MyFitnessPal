@@ -13,16 +13,13 @@ public class ExerciseStorage {
         return exercises;
     }
 
-    public final void setExercises(List<Exercise> exercises) {
-        this.exercises = exercises;
-    }
-
     public final void addExercise(Exercise exercise) {
         if (exercise == null) {
             throw new IllegalArgumentException(Messages.EXERCISE_CANNOT_BE_NULL);
         }
         exercises.add(exercise);
     }
+
     public final void removeExercise(Exercise exercise) {
         if (exercise == null) {
             throw new IllegalArgumentException(Messages.EXERCISE_CANNOT_BE_NULL);

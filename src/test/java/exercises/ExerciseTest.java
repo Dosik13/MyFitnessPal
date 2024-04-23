@@ -9,7 +9,7 @@ class ExerciseTest {
     @Test
     void setNameTest() {
         Exercise exercise = new Exercise("Push-ups", "Push-ups description",
-                List.of(Muscle.CHEST, Muscle.TRICEPS), List.of("None"), Difficulty.EASY);
+                List.of(Muscle.CHEST, Muscle.TRICEPS), List.of("None"), Exercise.Difficulty.EASY);
         exercise.setName("Pull-ups");
         assertEquals("Pull-ups", exercise.getName());
     }
