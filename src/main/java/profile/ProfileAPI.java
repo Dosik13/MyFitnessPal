@@ -61,27 +61,11 @@ public interface ProfileAPI {
     int getCalorieIntake();
 
     /**
-     * Retrieves the water goal associated with the profile.
-     *
-     * @return The water goal associated with the profile.
-     */
-    int getWaterGoal();
-
-    /**
-     * Changes the water goal of the profile
-     *
-     * @param newGoal the new water goal associated with the profile
-     * @return The new water goal associated with the profile
-     */
-    int changeWaterGoal(int newGoal);
-
-    /**
      * Changes the goals of the profile
      *
      * @param newGoals the new goals associated with the profile
-     * @return If they are changed or not (if the list is empty it return false)
      *
      * @throws IllegalArgumentException if newGoals is null
      */
-    boolean changeGoals(List<Goal> newGoals);
+    void changeGoals(List<Goal> newGoals);
 }

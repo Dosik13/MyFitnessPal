@@ -1,7 +1,5 @@
 package profile;
 
-import water.WaterGoal;
-
 import java.util.List;
 
 public class Profile implements ProfileAPI {
@@ -15,12 +13,8 @@ public class Profile implements ProfileAPI {
     private Gender gender;
     private Country country;
 
-    //TODO add Program (List from exercies)
-    //TODO add lists with food that are stored in my profile
-
     //Variables
-    private int calorieIntake;
-    private WaterGoal waterGoal;
+    private int calorieIntakeGoal;
 
     public Profile(String username, String fullName, int age, Anthropometry anthropometry, List<Goal> goals,
                    Gender gender, Country country) {
@@ -32,8 +26,7 @@ public class Profile implements ProfileAPI {
         this.gender = gender;
         this.country = country;
 
-        this.calorieIntake = findCalorieIntake();
-        this.waterGoal = new WaterGoal(2);
+        this.calorieIntakeGoal = findCalorieIntake();
     }
 
     @Override
@@ -73,35 +66,17 @@ public class Profile implements ProfileAPI {
 
     @Override
     public final int getCalorieIntake() {
-        return calorieIntake;
+        return calorieIntakeGoal;
     }
 
     @Override
-    public final int getWaterGoal() {
-        return waterGoal.getGoal();
-    }
-
-    @Override
-    public final int changeWaterGoal(int newGoal) {
-        waterGoal.setGoal(newGoal);
-
-        return waterGoal.getGoal();
-    }
-
-    @Override
-    public final boolean changeGoals(List<Goal> newGoals) {
+    public final void changeGoals(List<Goal> newGoals) {
         if (newGoals == null) {
             throw new IllegalArgumentException("The list cannot be null");
         }
 
-        if (newGoals.isEmpty()) {
-            return false;
-        }
-
         goals = newGoals;
-        calorieIntake = findCalorieIntake();
-        return true;
-
+        calorieIntakeGoal = findCalorieIntake();
     }
 
     private int findCalorieIntake() {
