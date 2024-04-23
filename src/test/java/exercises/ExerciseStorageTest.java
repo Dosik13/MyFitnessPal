@@ -1,4 +1,3 @@
-
 package exercises;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -6,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -18,13 +18,12 @@ class ExerciseStorageTest {
     private ExerciseStorage storage;
     private Exercise exercise1;
     private Exercise exercise2;
-
     @BeforeEach
     void setUp() {
         exercise1 = new Exercise("Push-ups", "Push-ups description",
-                new String[]{"Chest", "Triceps"}, new String[]{"None"}, "Easy");
+                List.of(Muscle.CHEST, Muscle.TRICEPS), List.of("None"), Difficulty.EASY);
         exercise2 = new Exercise("Pull-ups", "Pull-ups description",
-                new String[]{"Back", "Biceps"}, new String[]{"None"}, "Medium");
+                List.of(Muscle.LOWER_BACK, Muscle.BICEPS), List.of("None"), Difficulty.MEDIUM);
         storage = new ExerciseStorage(new ArrayList<>(Arrays.asList(exercise1, exercise2)));
     }
 
