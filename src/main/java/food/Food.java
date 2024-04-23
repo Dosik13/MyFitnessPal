@@ -133,63 +133,63 @@ public final class Food {
 
     }
 
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
-    public final String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public final String getServingSize() {
+    public String getServingSize() {
         return servingSize;
     }
 
-    public final int getServingsPerContainer() {
+    public int getServingsPerContainer() {
         return servingsPerContainer;
     }
 
-    public final int getCalories() {
+    public int getCalories() {
         return calories;
     }
 
-    public final int getTotalFat() {
+    public int getTotalFat() {
         return totalFat;
     }
 
-    public final int getSaturatedFat() {
+    public int getSaturatedFat() {
         return saturatedFat;
     }
 
-    public final int getPolyunsaturatedFat() {
+    public int getPolyunsaturatedFat() {
         return polyunsaturatedFat;
     }
 
-    public final int getMonounsaturatedFat() {
+    public int getMonounsaturatedFat() {
         return monounsaturatedFat;
     }
 
-    public final int getTransFat() {
+    public int getTransFat() {
         return transFat;
     }
 
-    public final int getProtein() {
+    public int getProtein() {
         return protein;
     }
 
-    public final int getCholesterol() {
+    public int getCholesterol() {
         return cholesterol;
     }
 
-    public final int getCarbohydrates() {
+    public int getCarbohydrates() {
         return carbohydrates;
     }
 
-    public final int getDietaryFiber() {
+    public int getDietaryFiber() {
         return dietaryFiber;
     }
 
-    public final int getSugars() {
+    public int getSugars() {
         return sugars;
     }
 }
