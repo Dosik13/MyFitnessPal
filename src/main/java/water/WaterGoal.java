@@ -33,13 +33,6 @@ public class WaterGoal {
             System.out.println(entry.getKey() + " - " + entry.getValue() + " ml");
         }
     }
-
-    public static void main(String[] args) {
-        WaterGoal waterGoal = new WaterGoal(1000);
-        waterGoal.logFromUser();
-        waterGoal.logFromUser();
-        waterGoal.printAllLogs();
-    }
     public final void logFromUser() {
         int amount;
         try {
