@@ -16,6 +16,7 @@ public class WaterGoal {
     private static final int MEDIUM_SIZE_CUP = 250;
     private static final int LARGE_SIZE_CUP = 500;
 
+    private static final String UNIT = " ml";
     private final WaterStorage waterStorage;
     private final InputStream inputStream;
 
@@ -30,7 +31,7 @@ public class WaterGoal {
 
     public final void printAllLogs() {
         for (Map.Entry<LocalDate, Integer> entry : waterStorage.getWaterLogStorage().entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue() + " ml");
+            System.out.println(entry.getKey() + " - " + entry.getValue() + UNIT);
         }
     }
     public final void logFromUser() {
@@ -58,9 +59,9 @@ public class WaterGoal {
 
     private int getAmountFromUser() throws IOException {
         System.out.println("Enter water drink amount to log:");
-        System.out.println("1." + SMALL_SIZE_CUP + " ml");
-        System.out.println("2." + MEDIUM_SIZE_CUP + " ml");
-        System.out.println("3." + LARGE_SIZE_CUP + " ml");
+        System.out.println("1." + SMALL_SIZE_CUP + UNIT);
+        System.out.println("2." + MEDIUM_SIZE_CUP + UNIT);
+        System.out.println("3." + LARGE_SIZE_CUP + UNIT);
         System.out.println("4. Other");
 
         String request;
@@ -98,7 +99,7 @@ public class WaterGoal {
     public final void printLogForDay(LocalDate localDate) {
         if (waterStorage.getWaterLogStorage().containsKey(localDate)) {
             System.out.println(
-                "Water drunk on " + localDate + " - " + waterStorage.getWaterLogStorage().get(localDate) + " ml");
+                "Water drunk on " + localDate + " - " + waterStorage.getWaterLogStorage().get(localDate) + UNIT);
         } else {
             System.out.println("No logs for the given day");
         }
