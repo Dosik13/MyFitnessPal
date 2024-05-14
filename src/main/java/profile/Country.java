@@ -32,4 +32,14 @@ public enum Country {
     public String toString() {
         return countryName;
     }
+
+    public static Country getFromString(String countryName) {
+        for (Country country : Country.values()) {
+            if (country.countryName.equalsIgnoreCase(countryName)) {
+                return country;
+            }
+        }
+
+        throw new IllegalArgumentException("No enum constant with countryName: " + countryName);
+    }
 }

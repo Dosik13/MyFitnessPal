@@ -2,7 +2,7 @@ package profile;
 
 import java.util.List;
 
-public class Profile implements ProfileAPI {
+public final class Profile implements ProfileAPI {
 
     //Profile information
     private String username;
@@ -30,53 +30,71 @@ public class Profile implements ProfileAPI {
     }
 
     @Override
-    public final String getUsername() {
+    public String getUsername() {
         return username;
     }
 
     @Override
-    public final String getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
     @Override
-    public final int getAge() {
+    public int getAge() {
         return age;
     }
 
     @Override
-    public final Anthropometry getAnthropometry() {
+    public Anthropometry getAnthropometry() {
         return anthropometry;
     }
 
     @Override
-    public final List<Goal> getGoals() {
+    public List<Goal> getGoals() {
         return goals;
     }
 
     @Override
-    public final Gender getGender() {
+    public Gender getGender() {
         return gender;
     }
 
     @Override
-    public final Country getCountry() {
+    public Country getCountry() {
         return country;
     }
 
     @Override
-    public final int getCalorieIntake() {
+    public int getCalorieIntake() {
         return calorieIntakeGoal;
     }
 
     @Override
-    public final void changeGoals(List<Goal> newGoals) {
+    public void changeGoals(List<Goal> newGoals) {
         if (newGoals == null) {
             throw new IllegalArgumentException("The list cannot be null");
         }
 
         goals = newGoals;
         calorieIntakeGoal = findCalorieIntake();
+    }
+
+    @Override
+    public void changeWeight(int weight) {
+        if (weight <= 0) {
+            throw new IllegalArgumentException("The weight cannot be zero or less");
+        }
+
+        setAnthropometry(anthropometry.height(), weight);
+    }
+
+    @Override
+    public void changeHeight(int height) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("The height cannot be zero or less");
+        }
+
+        setAnthropometry(height, anthropometry.weight());
     }
 
     private int findCalorieIntake() {
@@ -98,5 +116,22 @@ public class Profile implements ProfileAPI {
         }
 
         return currentCalorieIntake;
+    }
+
+    private void setAnthropometry(int height, int weight) {
+        anthropometry = new Anthropometry(height, weight);
+        calorieIntakeGoal = findCalorieIntake();
+    }
+
+    @Override
+    public String toString() {
+        return "Username: " + username + "\n"
+            + "Full Name: " + fullName + "\n"
+            + "Age: " + age + "\n"
+            + "Anthropometry: " + anthropometry + "\n"
+            + "Goals: " + goals + "\n"
+            + "Gender: " + gender + "\n"
+            + "Country: " + country + "\n"
+            + "Calorie Intake Goal: " + calorieIntakeGoal + "\n";
     }
 }

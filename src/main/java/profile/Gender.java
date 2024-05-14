@@ -2,8 +2,8 @@ package profile;
 
 public enum Gender {
 
-    MALE("male"),
-    FEMALE("female");
+    MALE("Male"),
+    FEMALE("Female");
 
     private String gender;
 
@@ -16,4 +16,13 @@ public enum Gender {
         return gender;
     }
 
+    public static Gender getFromString(String genderName) {
+        for (Gender gender : Gender.values()) {
+            if (gender.gender.equalsIgnoreCase(genderName)) {
+                return gender;
+            }
+        }
+
+        throw new IllegalArgumentException("No enum constant with genderName: " + genderName);
+    }
 }

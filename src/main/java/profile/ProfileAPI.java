@@ -64,8 +64,23 @@ public interface ProfileAPI {
      * Changes the goals of the profile
      *
      * @param newGoals the new goals associated with the profile
-     *
      * @throws IllegalArgumentException if newGoals is null
      */
     void changeGoals(List<Goal> newGoals);
+
+    /**
+     * Changes the weight in the anthropometry
+     *
+     * @param weight the new height associated with the profile
+     * @throws IllegalArgumentException if weight is zero or less
+     */
+    void changeWeight(int weight);
+
+    /**
+     * Changes the height in the anthropometry
+     *
+     * @param height the new height associated with the profile
+     * @throws IllegalArgumentException if height is zero or less
+     */
+    void changeHeight(int height);
 }
