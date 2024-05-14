@@ -125,13 +125,13 @@ public final class Profile implements ProfileAPI {
 
     @Override
     public String toString() {
-        return "Username: " + username + "\n" +
-            "Full Name: " + fullName + "\n" +
-            "Age: " + age + "\n" +
-            "Anthropometry: " + anthropometry + "\n" +
-            "Goals: " + goals + "\n" +
-            "Gender: " + gender + "\n" +
-            "Country: " + country + "\n" +
-            "Calorie Intake Goal: " + calorieIntakeGoal + "\n";
+        return "Username: " + username + "\n"
+            + "Full Name: " + fullName + "\n"
+            + "Age: " + age + "\n"
+            + "Anthropometry: " + anthropometry + "\n"
+            + "Goals: " + goals + "\n"
+            + "Gender: " + gender + "\n"
+            + "Country: " + country + "\n"
+            + "Calorie Intake Goal: " + calorieIntakeGoal + "\n";
     }
 }
