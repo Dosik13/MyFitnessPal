@@ -16,4 +16,14 @@ public enum Gender {
         return gender;
     }
 
+    public static Gender getByGender(String genderName) {
+        genderName = genderName.toLowerCase();
+        for (Gender gender : Gender.values()) {
+            if (gender.gender.equals(genderName)) {
+                return gender;
+            }
+        }
+
+        throw new IllegalArgumentException("No enum constant with genderName: " + genderName);
+    }
 }

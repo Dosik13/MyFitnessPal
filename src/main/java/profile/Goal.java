@@ -2,10 +2,10 @@ package profile;
 
 public enum Goal {
 
-    WEIGHT_LOSS("weight loss"),
-    WEIGHT_GAIN("weight gain"),
-    FAT_LOSS("fat loss"),
-    MUSCLE_GAIN("muscle gain");
+    WEIGHT_LOSS("Weight Loss"),
+    WEIGHT_GAIN("Weight Gain"),
+    FAT_LOSS("Fat Loss"),
+    MUSCLE_GAIN("Muscle Gain");
 
     private String weighGoal;
 

@@ -1,26 +1,26 @@
 package profile;
 
 public enum Country {
-    RUSSIA("Russia"),
-    UKRAINE("Ukraine"),
-    FRANCE("France"),
-    SPAIN("Spain"),
-    SWEDEN("Sweden"),
-    NORWAY("Norway"),
-    GERMANY("Germany"),
-    FINLAND("Finland"),
-    POLAND("Poland"),
-    ITALY("Italy"),
-    UNITED_KINGDOM("United Kingdom"),
-    ROMANIA("Romania"),
-    BELARUS("Belarus"),
-    KAZAKHSTAN("Kazakhstan"),
-    GREECE("Greece"),
-    BULGARIA("Bulgaria"),
-    ICELAND("Iceland"),
-    HUNGARY("Hungary"),
-    PORTUGAL("Portugal"),
-    AUSTRIA("Austria");
+    RUSSIA("russia"),
+    UKRAINE("ukraine"),
+    FRANCE("france"),
+    SPAIN("spain"),
+    SWEDEN("sweden"),
+    NORWAY("norway"),
+    GERMANY("germany"),
+    FINLAND("finland"),
+    POLAND("poland"),
+    ITALY("italy"),
+    UNITED_KINGDOM("united kingdom"),
+    ROMANIA("romania"),
+    BELARUS("belarus"),
+    KAZAKHSTAN("kazakhstan"),
+    GREECE("greece"),
+    BULGARIA("bulgaria"),
+    ICELAND("iceland"),
+    HUNGARY("hungary"),
+    PORTUGAL("portugal"),
+    AUSTRIA("austria");
 
     private String countryName;
 
@@ -31,5 +31,16 @@ public enum Country {
     @Override
     public String toString() {
         return countryName;
+    }
+
+    public static Country getByCountryName(String countryName) {
+        countryName = countryName.toLowerCase();
+        for (Country country : Country.values()) {
+            if (country.countryName.equals(countryName)) {
+                return country;
+            }
+        }
+
+        throw new IllegalArgumentException("No enum constant with countryName: " + countryName);
     }
 }
