@@ -1,6 +1,6 @@
 package profile;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,8 +12,8 @@ public class ProfileTest {
 
     private static Profile profile;
 
-    @BeforeAll
-    static void init() {
+    @BeforeEach
+    final void init() {
         profile =
             new Profile("Pe7atN", "Petar Nedyalkov", 20, new Anthropometry(190, 75), List.of(Goal.WEIGHT_GAIN),
                 Gender.MALE, Country.BULGARIA);
@@ -37,7 +37,6 @@ public class ProfileTest {
         profile.changeWeight(80);
         assertEquals(80, profile.getAnthropometry().weight(),
             "It was expected the weight to be 80");
-        profile.changeWeight(75);
     }
 
     @Test
@@ -54,7 +53,6 @@ public class ProfileTest {
         profile.changeHeight(180);
         assertEquals(180, profile.getAnthropometry().height(),
             "It was expected the weight to be 80");
-        profile.changeHeight(190);
     }
 
     @Test

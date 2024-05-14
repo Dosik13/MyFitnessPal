@@ -6,6 +6,7 @@ import profile.Gender;
 import profile.Goal;
 import profile.Profile;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.Scanner;
 public final class RegistrationForm {
     private Scanner scanner;
 
-    public RegistrationForm() {
-        this.scanner = new Scanner(System.in);
+    public RegistrationForm(InputStream inputStream) {
+        this.scanner = new Scanner(inputStream);
     }
 
     public Profile register() {
@@ -50,15 +51,15 @@ public final class RegistrationForm {
 
     private int getAge() {
         System.out.println("Now write your age:");
-        return validInput();
+        return getIntFromStream();
     }
 
     private Anthropometry getAnthropometry() {
         System.out.println("Now write your height:");
-        int height = validInput();
+        int height = getIntFromStream();
 
         System.out.println("Now write your weight:");
-        int weight = validInput();
+        int weight = getIntFromStream();
 
         return new Anthropometry(height, weight);
     }
@@ -113,7 +114,7 @@ public final class RegistrationForm {
         return List.copyOf(selectedGoals);
     }
 
-    private int validInput() {
+    private int getIntFromStream() {
         while (true) {
             if (scanner.hasNextInt()) {
                 return scanner.nextInt();
