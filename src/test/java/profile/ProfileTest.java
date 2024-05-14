@@ -65,13 +65,13 @@ public class ProfileTest {
 
     @Test
     void testCountryPrint() {
-        assertEquals("bulgaria", profile.getCountry().toString(),
+        assertEquals("Bulgaria", profile.getCountry().toString(),
             "It was expected to write the country");
     }
 
     @Test
     void testGenderPrint() {
-        assertEquals("male", profile.getGender().toString(),
+        assertEquals("Male", profile.getGender().toString(),
             "It was expected to write the right gender");
     }
 
