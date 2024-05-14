@@ -14,9 +14,9 @@ public class ProfileTest {
 
     @BeforeAll
     static void init() {
-        profile = Profile.builder("Pe7atN").setFullName("Petar Nedyalkov").setAge(20)
-            .setAnthropometry(new Anthropometry(190, 75)).setGoals(List.of(Goal.WEIGHT_GAIN)).setGender(Gender.MALE)
-            .setCountry(Country.BULGARIA).build();
+        profile =
+            new Profile("Pe7atN", "Petar Nedyalkov", 20, new Anthropometry(190, 75), List.of(Goal.WEIGHT_GAIN),
+                Gender.MALE, Country.BULGARIA);
     }
 
     @Test

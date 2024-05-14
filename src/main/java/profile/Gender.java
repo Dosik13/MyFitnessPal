@@ -2,8 +2,8 @@ package profile;
 
 public enum Gender {
 
-    MALE("male"),
-    FEMALE("female");
+    MALE("Male"),
+    FEMALE("Female");
 
     private String gender;
 
@@ -16,10 +16,9 @@ public enum Gender {
         return gender;
     }
 
-    public static Gender getByGender(String genderName) {
-        genderName = genderName.toLowerCase();
+    public static Gender getFromString(String genderName) {
         for (Gender gender : Gender.values()) {
-            if (gender.gender.equals(genderName)) {
+            if (gender.gender.equalsIgnoreCase(genderName)) {
                 return gender;
             }
         }

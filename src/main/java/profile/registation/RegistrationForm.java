@@ -7,7 +7,9 @@ import profile.Goal;
 import profile.Profile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public final class RegistrationForm {
@@ -28,8 +30,7 @@ public final class RegistrationForm {
         Gender gender = getGender();
         List<Goal> goals = getGoals();
 
-        return Profile.builder(username).setFullName(fullName).setAge(age).setAnthropometry(anthropometry)
-            .setCountry(country).setGender(gender).setGoals(goals).build();
+        return new Profile(username, fullName, age, anthropometry, goals, gender, country);
     }
 
     private String getUsername() {
@@ -49,35 +50,17 @@ public final class RegistrationForm {
 
     private int getAge() {
         System.out.println("Now write your age:");
-        while (true) {
-            if (scanner.hasNextInt()) {
-                int age = scanner.nextInt();
-                return age;
-            } else {
-                System.out.println("Wrong input! Please enter a valid age.");
-                scanner.next();
-            }
-        }
+        return validInput();
     }
 
     private Anthropometry getAnthropometry() {
-        System.out.println("Now write your height and weight:");
-        while (true) {
-            if (scanner.hasNextInt()) {
-                int height = scanner.nextInt();
-                if (scanner.hasNextInt()) {
-                    int weight = scanner.nextInt();
-                    scanner.nextLine();
-                    return new Anthropometry(height, weight);
-                } else {
-                    System.out.println("Wrong input! Please enter both valid height and weight.");
-                    scanner.nextLine();
-                }
-            } else {
-                System.out.println("Wrong input! Please enter both valid height and weight.");
-                scanner.nextLine();
-            }
-        }
+        System.out.println("Now write your height:");
+        int height = validInput();
+
+        System.out.println("Now write your weight:");
+        int weight = validInput();
+
+        return new Anthropometry(height, weight);
     }
 
     private Country getCountry() {
@@ -85,7 +68,7 @@ public final class RegistrationForm {
         while (true) {
             String countryName = scanner.nextLine();
             try {
-                return Country.getByCountryName(countryName);
+                return Country.getFromString(countryName);
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid country name! Please enter a valid country name.");
             }
@@ -97,7 +80,7 @@ public final class RegistrationForm {
         while (true) {
             String gender = scanner.nextLine();
             try {
-                return Gender.getByGender(gender);
+                return Gender.getFromString(gender);
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid gender! Please enter a valid gender.");
             }
@@ -106,25 +89,38 @@ public final class RegistrationForm {
 
     private List<Goal> getGoals() {
         System.out.println(
-            "Now choose what are your goals. Write down only the number of it. As u can choose more than one goal.");
+            "Now choose what are your goals. Write down only the number of it. As you can choose more than one goal.");
         int idx = 1;
+        Map<Integer, Goal> goals = new HashMap<>();
         for (Goal goal : Goal.values()) {
             System.out.println(idx + " " + goal.toString());
+            goals.put(idx, goal);
             idx++;
         }
 
         String[] input = scanner.nextLine().split(" ");
         List<Goal> selectedGoals = new ArrayList<>();
         for (String number : input) {
-            switch (Integer.parseInt(number)) {
-                case 1 -> selectedGoals.add(Goal.WEIGHT_LOSS);
-                case 2 -> selectedGoals.add(Goal.WEIGHT_GAIN);
-                case 3 -> selectedGoals.add(Goal.FAT_LOSS);
-                case 4 -> selectedGoals.add(Goal.MUSCLE_GAIN);
-                default -> System.out.println("Invalid goal number: " + number);
+            int num = Integer.parseInt(number);
+            //Even though we add new goals, idx will always be the count of them
+            if (num < 1 || num >= idx) {
+                System.out.println("Invalid goal number: " + number);
             }
+
+            selectedGoals.add(goals.get(num));
         }
 
         return List.copyOf(selectedGoals);
+    }
+
+    private int validInput() {
+        while (true) {
+            if (scanner.hasNextInt()) {
+                return scanner.nextInt();
+            } else {
+                System.out.println("Wrong input! Please enter a valid one.");
+                scanner.next();
+            }
+        }
     }
 }

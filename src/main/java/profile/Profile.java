@@ -16,18 +16,15 @@ public final class Profile implements ProfileAPI {
     //Variables
     private int calorieIntakeGoal;
 
-    public static ProfileBuilder builder(String username) {
-        return new ProfileBuilder(username);
-    }
-
-    private Profile(ProfileBuilder builder) {
-        this.username = builder.username;
-        this.fullName = builder.fullName;
-        this.age = builder.age;
-        this.anthropometry = builder.anthropometry;
-        this.goals = builder.goals;
-        this.gender = builder.gender;
-        this.country = builder.country;
+    public Profile(String username, String fullName, int age, Anthropometry anthropometry, List<Goal> goals,
+                   Gender gender, Country country) {
+        this.username = username;
+        this.fullName = fullName;
+        this.age = age;
+        this.anthropometry = anthropometry;
+        this.goals = goals;
+        this.gender = gender;
+        this.country = country;
 
         this.calorieIntakeGoal = findCalorieIntake();
     }
@@ -88,9 +85,7 @@ public final class Profile implements ProfileAPI {
             throw new IllegalArgumentException("The weight cannot be zero or less");
         }
 
-        int height = anthropometry.height();
-        anthropometry = new Anthropometry(height, weight);
-        calorieIntakeGoal = findCalorieIntake(); // it depends on anthropometry
+        setAnthropometry(anthropometry.height(), weight);
     }
 
     @Override
@@ -99,9 +94,7 @@ public final class Profile implements ProfileAPI {
             throw new IllegalArgumentException("The height cannot be zero or less");
         }
 
-        int weight = anthropometry.weight();
-        anthropometry = new Anthropometry(height, weight);
-        calorieIntakeGoal = findCalorieIntake(); // it depends on anthropometry
+        setAnthropometry(height, anthropometry.weight());
     }
 
     private int findCalorieIntake() {
@@ -125,70 +118,20 @@ public final class Profile implements ProfileAPI {
         return currentCalorieIntake;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Username: ").append(username).append("\n");
-        sb.append("Full Name: ").append(fullName).append("\n");
-        sb.append("Age: ").append(age).append("\n");
-        sb.append("Anthropometry: ").append(anthropometry).append("\n");
-        sb.append("Goals: ").append(goals).append("\n");
-        sb.append("Gender: ").append(gender).append("\n");
-        sb.append("Country: ").append(country).append("\n");
-        sb.append("Calorie Intake Goal: ").append(calorieIntakeGoal).append("\n");
-        return sb.toString();
+    private void setAnthropometry(int height, int weight) {
+        anthropometry = new Anthropometry(height, weight);
+        calorieIntakeGoal = findCalorieIntake();
     }
 
-    //BuilderClass
-    public static final class ProfileBuilder {
-
-        //required parameters
-        private String username;
-
-        //optional parameters
-        private String fullName;
-        private int age;
-        private Anthropometry anthropometry;
-        private List<Goal> goals;
-        private Gender gender;
-        private Country country;
-
-        private ProfileBuilder(String username) {
-            this.username = username;
-        }
-
-        public ProfileBuilder setFullName(String fullName) {
-            this.fullName = fullName;
-            return this;
-        }
-
-        public ProfileBuilder setAge(int age) {
-            this.age = age;
-            return this;
-        }
-
-        public ProfileBuilder setAnthropometry(Anthropometry anthropometry) {
-            this.anthropometry = anthropometry;
-            return this;
-        }
-
-        public ProfileBuilder setGoals(List<Goal> goals) {
-            this.goals = goals;
-            return this;
-        }
-
-        public ProfileBuilder setGender(Gender gender) {
-            this.gender = gender;
-            return this;
-        }
-
-        public ProfileBuilder setCountry(Country country) {
-            this.country = country;
-            return this;
-        }
-
-        public Profile build() {
-            return new Profile(this);
-        }
+    @Override
+    public String toString() {
+        return "Username: " + username + "\n" +
+            "Full Name: " + fullName + "\n" +
+            "Age: " + age + "\n" +
+            "Anthropometry: " + anthropometry + "\n" +
+            "Goals: " + goals + "\n" +
+            "Gender: " + gender + "\n" +
+            "Country: " + country + "\n" +
+            "Calorie Intake Goal: " + calorieIntakeGoal + "\n";
     }
 }

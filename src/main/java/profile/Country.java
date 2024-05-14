@@ -1,26 +1,26 @@
 package profile;
 
 public enum Country {
-    RUSSIA("russia"),
-    UKRAINE("ukraine"),
-    FRANCE("france"),
-    SPAIN("spain"),
-    SWEDEN("sweden"),
-    NORWAY("norway"),
-    GERMANY("germany"),
-    FINLAND("finland"),
-    POLAND("poland"),
-    ITALY("italy"),
-    UNITED_KINGDOM("united kingdom"),
-    ROMANIA("romania"),
-    BELARUS("belarus"),
-    KAZAKHSTAN("kazakhstan"),
-    GREECE("greece"),
-    BULGARIA("bulgaria"),
-    ICELAND("iceland"),
-    HUNGARY("hungary"),
-    PORTUGAL("portugal"),
-    AUSTRIA("austria");
+    RUSSIA("Russia"),
+    UKRAINE("Ukraine"),
+    FRANCE("France"),
+    SPAIN("Spain"),
+    SWEDEN("Sweden"),
+    NORWAY("Norway"),
+    GERMANY("Germany"),
+    FINLAND("Finland"),
+    POLAND("Poland"),
+    ITALY("Italy"),
+    UNITED_KINGDOM("United Kingdom"),
+    ROMANIA("Romania"),
+    BELARUS("Belarus"),
+    KAZAKHSTAN("Kazakhstan"),
+    GREECE("Greece"),
+    BULGARIA("Bulgaria"),
+    ICELAND("Iceland"),
+    HUNGARY("Hungary"),
+    PORTUGAL("Portugal"),
+    AUSTRIA("Austria");
 
     private String countryName;
 
@@ -33,10 +33,9 @@ public enum Country {
         return countryName;
     }
 
-    public static Country getByCountryName(String countryName) {
-        countryName = countryName.toLowerCase();
+    public static Country getFromString(String countryName) {
         for (Country country : Country.values()) {
-            if (country.countryName.equals(countryName)) {
+            if (country.countryName.equalsIgnoreCase(countryName)) {
                 return country;
             }
         }
