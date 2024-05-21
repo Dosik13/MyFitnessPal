@@ -3,7 +3,7 @@ package exercises;
 import java.util.List;
 
 public class ExerciseStorage {
-    private List<Exercise> exercises;
+    private final List<Exercise> exercises;
 
     public ExerciseStorage(List<Exercise> exercises) {
         this.exercises = exercises;

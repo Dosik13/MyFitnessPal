@@ -58,4 +58,13 @@ public class Routine {
 
         return null;
     }
+    public final void printRoutine() {
+        System.out.println("Routine: " + name);
+        System.out.println("Instructions: " + instructions);
+        System.out.println("Elements: ");
+        for (RoutineElement element : elements) {
+            System.out.println(element.getExercise().getName()
+                    + " - " + element.getReps() + " reps - " + element.getSets() + " sets");
+        }
+    }
 }

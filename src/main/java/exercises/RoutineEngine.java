@@ -1,54 +1,39 @@
 package exercises;
 
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.util.List;
 
 public class RoutineEngine {
+    private final RoutineStorage routineStorage;
     private final ExerciseStorage exerciseStorage;
-    private final Scanner scanner;
+    private final RoutineLogStorage routineLogStorage;
 
-    public RoutineEngine(ExerciseStorage exerciseStorage, Scanner scanner) {
+    public RoutineEngine(RoutineStorage routineStorage, ExerciseStorage exerciseStorage,
+                         RoutineLogStorage routineLogStorage) {
+        this.routineStorage = routineStorage;
         this.exerciseStorage = exerciseStorage;
-        this.scanner = scanner;
+        this.routineLogStorage = routineLogStorage;
     }
 
-    public final Routine addRoutine() {
-        System.out.println(Messages.ENTER_ROUTINE_NAME);
-        String name = scanner.nextLine();
-
-        System.out.println(Messages.ENTER_ROUTINE_INSTRUCTIONS);
-        String instructions = scanner.nextLine();
-
+    public final Routine addRoutine(String name, String instructions) {
         return new Routine(name, instructions);
     }
 
-    public final void addExercisesToRoutine(Routine routine) {
-        while (true) {
-            System.out.println(Messages.ENTER_EXERCISE_NAME);
-            String exerciseName = scanner.nextLine();
-
-            if (Messages.QUIT.equalsIgnoreCase(exerciseName)) {
-                break;
-            }
-
+    public final void addExercisesToRoutine(Routine routine, List<String> inputs) {
+        for (int i = 0; i < inputs.size(); i += 4) {
+            String exerciseName = inputs.get(i);
             Exercise exercise = exerciseStorage.getExerciseByName(exerciseName);
             if (exercise == null) {
                 System.out.println(Messages.EXERCISE_NOT_FOUND);
                 continue;
             }
 
-            System.out.println(Messages.ENTER_NUMBER_OF_SETS);
-            int sets = Integer.parseInt(scanner.nextLine());
-
-            System.out.println(Messages.ENTER_NUMBER_OF_REPS);
-            int reps = Integer.parseInt(scanner.nextLine());
-
+            int sets = Integer.parseInt(inputs.get(i + 1));
+            int reps = Integer.parseInt(inputs.get(i + 2));
             Integer kg = null;
-            if (exercise.getKg() != null) {
-                System.out.println(Messages.ENTER_WEIGHT_IN_KG);
-                String kgInput = scanner.nextLine();
-                if (!kgInput.isEmpty()) {
-                    kg = Integer.parseInt(kgInput);
-                }
+            String kgInput = inputs.get(i + 3);
+            if (!kgInput.isEmpty()) {
+                kg = Integer.parseInt(kgInput);
             }
             exercise.setKg(kg);
 
@@ -57,10 +42,46 @@ public class RoutineEngine {
         }
     }
 
-    public final Routine createRoutine() {
-        Routine routine = addRoutine();
-        addExercisesToRoutine(routine);
+    public final void createRoutine(String name, String instructions, List<String> inputs) {
+        Routine routine = addRoutine(name, instructions);
+        addExercisesToRoutine(routine, inputs);
         System.out.println(Messages.ROUTINE_CREATED);
-        return routine;
+        routineStorage.addRoutine(routine);
+    }
+
+    public final void removeRoutineByName(String name) {
+        routineStorage.removeRoutineByName(name);
+    }
+
+    public final List<Routine> getAllRoutines() {
+        return routineStorage.getAllRoutines();
+    }
+
+    public final void printRoutineList() {
+        for (int i = 0; i < getAllRoutines().size(); i++) {
+            System.out.println(i + 1 + ". " + getAllRoutines().get(i).getName());
+        }
+    }
+
+    public final void logRoutine(LocalDate date, String routineName) {
+        Routine routine = routineStorage.getRoutineByName(routineName);
+        if (routine == null) {
+            System.out.println("Routine not found: " + routineName);
+            return;
+        }
+
+        RoutineLog log = new RoutineLog(date, routine);
+        routineLogStorage.addLog(log);
+        System.out.println("Routine logged: " + log);
+    }
+
+    public final void printRoutineLogs(String routineName) {
+        List<RoutineLog> logs = routineLogStorage.getLogs();
+        System.out.println("Log dates for routine: " + routineName);
+        for (RoutineLog log : logs) {
+            if (log.getRoutine().getName().equalsIgnoreCase(routineName)) {
+                System.out.println(log.getDate());
+            }
+        }
     }
 }
