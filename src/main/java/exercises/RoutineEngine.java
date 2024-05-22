@@ -1,5 +1,7 @@
 package exercises;
 
+import storage.Storage;
+
 import java.time.LocalDate;
 import java.util.List;
 

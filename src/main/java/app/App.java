@@ -6,7 +6,7 @@ import exercises.Exercise;
 import exercises.Routine;
 import exercises.RoutineEngine;
 import exercises.RoutineLog;
-import exercises.Storage;
+import storage.Storage;
 import menu.CommandMenu;
 
 import menu.ExercisesMenuCommand;
