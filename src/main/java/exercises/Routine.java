@@ -3,7 +3,7 @@ package exercises;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Routine {
+public class Routine implements Nameable {
     private String name;
     private String instructions;
     private List<RoutineElement> elements;

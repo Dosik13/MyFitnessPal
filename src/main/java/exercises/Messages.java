@@ -10,8 +10,8 @@ public final class Messages {
     static final String SETS_MUST_BE_LESS_THAN_100 = "Sets must be less than 100";
     static final String REPS_MUST_BE_GREATER_THAN_0 = "Reps must be greater than 0";
     static final String REPS_MUST_BE_LESS_THAN_1000 = "Reps must be less than 1000";
-    static final String EXERCISE_CANNOT_BE_NULL = "Exercise cannot be null";
-    static final String ROUTINE_NAME_CANNOT_BE_NULL = "Routine";
+    static final String ENTITY_CANNOT_BE_NULL = "T cannot be null";
+    static final String ENTITY_NAME_CANNOT_BE_NULL = "Routine";
     static final String EXERCISE_NAME_CANNOT_BE_NULL = "Exercise";
     static final String ROUTINE_ELEMENT_NAME_CANNOT_BE_NULL = "RoutineElement name cannot be null";
     static final String ROUTINE_ELEMENT_CANNOT_BE_NULL = "RoutineElement cannot be null";

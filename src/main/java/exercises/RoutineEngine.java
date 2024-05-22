@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class RoutineEngine {
-    private final RoutineStorage routineStorage;
-    private final ExerciseStorage exerciseStorage;
-    private final RoutineLogStorage routineLogStorage;
+    private final Storage<Routine> routineStorage;
+    private final Storage<Exercise> exerciseStorage;
+    private final Storage<RoutineLog> routineLogStorage;
 
-    public RoutineEngine(RoutineStorage routineStorage, ExerciseStorage exerciseStorage,
-                         RoutineLogStorage routineLogStorage) {
+    public RoutineEngine(Storage<Routine> routineStorage, Storage<Exercise> exerciseStorage,
+                         Storage<RoutineLog> routineLogStorage) {
         this.routineStorage = routineStorage;
         this.exerciseStorage = exerciseStorage;
         this.routineLogStorage = routineLogStorage;
@@ -22,7 +22,7 @@ public class RoutineEngine {
     public final void addExercisesToRoutine(Routine routine, List<String> inputs) {
         for (int i = 0; i < inputs.size(); i += 4) {
             String exerciseName = inputs.get(i);
-            Exercise exercise = exerciseStorage.getExerciseByName(exerciseName);
+            Exercise exercise = exerciseStorage.getEntityByName(exerciseName);
             if (exercise == null) {
                 System.out.println(Messages.EXERCISE_NOT_FOUND);
                 continue;
@@ -46,15 +46,15 @@ public class RoutineEngine {
         Routine routine = addRoutine(name, instructions);
         addExercisesToRoutine(routine, inputs);
         System.out.println(Messages.ROUTINE_CREATED);
-        routineStorage.addRoutine(routine);
+        routineStorage.addEntity(routine);
     }
 
     public final void removeRoutineByName(String name) {
-        routineStorage.removeRoutineByName(name);
+        routineStorage.removeEntityByName(name);
     }
 
     public final List<Routine> getAllRoutines() {
-        return routineStorage.getAllRoutines();
+        return routineStorage.getEntities();
     }
 
     public final void printRoutineList() {
@@ -64,19 +64,19 @@ public class RoutineEngine {
     }
 
     public final void logRoutine(LocalDate date, String routineName) {
-        Routine routine = routineStorage.getRoutineByName(routineName);
+        Routine routine = routineStorage.getEntityByName(routineName);
         if (routine == null) {
             System.out.println("Routine not found: " + routineName);
             return;
         }
 
         RoutineLog log = new RoutineLog(date, routine);
-        routineLogStorage.addLog(log);
+        routineLogStorage.addEntity(log);
         System.out.println("Routine logged: " + log);
     }
 
     public final void printRoutineLogs(String routineName) {
-        List<RoutineLog> logs = routineLogStorage.getLogs();
+        List<RoutineLog> logs = routineLogStorage.getEntities();
         System.out.println("Log dates for routine: " + routineName);
         for (RoutineLog log : logs) {
             if (log.getRoutine().getName().equalsIgnoreCase(routineName)) {

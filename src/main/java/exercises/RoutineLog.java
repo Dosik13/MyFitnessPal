@@ -2,7 +2,7 @@ package exercises;
 
 import java.time.LocalDate;
 
-public class RoutineLog {
+public class RoutineLog implements Nameable {
     private LocalDate date;
     private Routine routine;
 
@@ -21,5 +21,10 @@ public class RoutineLog {
 
     public final String toString() {
         return "Date: " + date + ", Routine: " + routine.getName();
+    }
+
+    @Override
+    public final String getName() {
+        return "RoutineLog" + date + ", " + routine.getName();
     }
 }
