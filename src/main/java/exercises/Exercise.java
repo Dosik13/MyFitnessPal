@@ -3,7 +3,7 @@ package exercises;
 
 import java.util.List;
 
-public class Exercise {
+public class Exercise implements Nameable {
     private String name;
     private String description;
     private List<Muscle> targetMuscles;
