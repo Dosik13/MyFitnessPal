@@ -2,7 +2,6 @@ package menu;
 
 import commanders.CommandProfile;
 import commands.Command;
-import commanders.CommandExercises;
 
 import java.util.List;
 
