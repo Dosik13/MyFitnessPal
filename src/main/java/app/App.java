@@ -1,12 +1,14 @@
 package app;
 
 import commanders.CommandExercises;
+import commanders.CommandProfile;
 import commands.Command;
 import exercises.Exercise;
 import exercises.Routine;
 import exercises.RoutineEngine;
 import exercises.RoutineLog;
 import menu.ExercisesMenuCommand;
+import menu.ProfileMenuCommand;
 import storage.Storage;
 import menu.CommandMenu;
 import profile.Profile;
@@ -39,9 +41,10 @@ public class App {
         Storage<RoutineLog> logStorage = new Storage<>(new ArrayList<>());
         RoutineEngine routineEngine = new RoutineEngine(routineStorage, exerciseStorage, logStorage);
         CommandExercises commandExercises = new CommandExercises(routineEngine);
+        CommandProfile commandProfile = new CommandProfile(profile1);
         Map<String, Command> commandMap = new HashMap<>();
         commandMap.put("exercises", new ExercisesMenuCommand(commandExercises));
-
+        commandMap.put("profile", new ProfileMenuCommand(commandProfile));
         App app = new App(new CommandMenu(scanner, commandMap), profile1);
         app.run();
     }
