@@ -2,13 +2,13 @@ package commanders;
 
 import java.util.List;
 
-import commands.AddRoutineCommand;
+import commands.exercise.AddRoutineCommand;
 import commands.Command;
-import commands.HelpExerciseCommand;
-import commands.LogRoutineCommand;
-import commands.PrintAllLogsForRoutineCommand;
-import commands.PrintRoutinesCommand;
-import commands.RemoveRoutineCommand;
+import commands.exercise.HelpExerciseCommand;
+import commands.exercise.LogRoutineCommand;
+import commands.exercise.PrintAllLogsForRoutineCommand;
+import commands.exercise.PrintRoutinesCommand;
+import commands.exercise.RemoveRoutineCommand;
 import exercises.RoutineEngine;
 
 public class CommandExercises extends CommandMap {

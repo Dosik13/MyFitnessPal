@@ -1,4 +1,6 @@
-package commands;
+package commands.exercise;
+
+import commands.Command;
 
 import java.util.List;
 
