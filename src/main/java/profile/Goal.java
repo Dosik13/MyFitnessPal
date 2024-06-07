@@ -13,6 +13,16 @@ public enum Goal {
         this.weighGoal = weighGoal;
     }
 
+    public static Goal getFromString(String goalName) {
+        for (Goal goal : Goal.values()) {
+            if (goal.weighGoal.equalsIgnoreCase(goalName)) {
+                return goal;
+            }
+        }
+
+        throw new IllegalArgumentException("No enum constant with genderName: " + goalName);
+    }
+
     @Override
     public String toString() {
         return weighGoal;

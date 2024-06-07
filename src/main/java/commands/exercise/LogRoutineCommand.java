@@ -1,5 +1,6 @@
-package commands;
+package commands.exercise;
 
+import commands.Command;
 import exercises.RoutineEngine;
 
 import java.time.LocalDate;

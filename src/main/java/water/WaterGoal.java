@@ -34,6 +34,7 @@ public class WaterGoal {
             System.out.println(entry.getKey() + " - " + entry.getValue() + UNIT);
         }
     }
+
     public final void logFromUser() {
         int amount;
         try {
