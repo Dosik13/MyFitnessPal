@@ -12,7 +12,6 @@ import commands.exercise.RemoveRoutineCommand;
 import exercises.RoutineEngine;
 
 public class CommandExercises extends CommandMap {
-    private final RoutineEngine engine;
     static final String ADD_ROUTINE = "add-routine";
     static final String REMOVE_ROUTINE = "remove-routine";
     static final String PRINT_ROUTINE = "print-routine";
@@ -20,12 +19,14 @@ public class CommandExercises extends CommandMap {
     static final String LOG_ROUTINE = "log-routine";
     static final String PRINT_LOGS = "print-logs";
 
+    private final RoutineEngine engine;
+
     public CommandExercises(RoutineEngine engine) {
         this.engine = engine;
         addToMap();
     }
 
-    public final void addToMap() {
+    private final void addToMap() {
         addToMap(ADD_ROUTINE, new AddRoutineCommand(engine));
         addToMap(REMOVE_ROUTINE, new RemoveRoutineCommand(engine));
         addToMap(PRINT_ROUTINE, new PrintRoutinesCommand(engine));
@@ -44,10 +45,7 @@ public class CommandExercises extends CommandMap {
             System.out.println("Command not found.");
             return;
         }
-        if (args.size() > 1) {
-            command.execute(args.subList(1, args.size()));
-        } else {
-            command.execute(null);
-        }
+
+        command.execute(args.subList(1, args.size()));
     }
 }

@@ -11,19 +11,20 @@ import commands.profile.GetStatusCommand;
 import profile.Profile;
 
 public class CommandProfile extends CommandMap {
-    private final Profile profile;
     static final String GET_STATUS = "get-status";
     static final String CHANGE_HEIGHT = "change-height";
     static final String CHANGE_WEIGHT = "change-weight";
     static final String CHANGE_GOALS = "change-goals";
     static final String HELP = "help";
 
+    private final Profile profile;
+
     public CommandProfile(Profile profile) {
         this.profile = profile;
         addToMap();
     }
 
-    public final void addToMap() {
+    private final void addToMap() {
         addToMap(GET_STATUS, new GetStatusCommand(profile));
         addToMap(CHANGE_HEIGHT, new ChangeHeightCommand(profile));
         addToMap(CHANGE_WEIGHT, new ChangeWeightCommand(profile));
@@ -42,11 +43,8 @@ public class CommandProfile extends CommandMap {
             System.out.println("Command not found.");
             return;
         }
-        if (args.size() > 1) {
-            command.execute(args.subList(1, args.size()));
-        } else {
-            command.execute(null);
-        }
+
+        command.execute(args.subList(1, args.size()));
     }
 }
 
