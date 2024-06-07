@@ -24,7 +24,7 @@ public class CommandProfile extends CommandMap {
         addToMap();
     }
 
-    private final void addToMap() {
+    private void addToMap() {
         addToMap(GET_STATUS, new GetStatusCommand(profile));
         addToMap(CHANGE_HEIGHT, new ChangeHeightCommand(profile));
         addToMap(CHANGE_WEIGHT, new ChangeWeightCommand(profile));

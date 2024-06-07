@@ -26,7 +26,7 @@ public class CommandExercises extends CommandMap {
         addToMap();
     }
 
-    private final void addToMap() {
+    private void addToMap() {
         addToMap(ADD_ROUTINE, new AddRoutineCommand(engine));
         addToMap(REMOVE_ROUTINE, new RemoveRoutineCommand(engine));
         addToMap(PRINT_ROUTINE, new PrintRoutinesCommand(engine));
