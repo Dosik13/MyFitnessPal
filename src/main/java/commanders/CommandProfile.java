@@ -8,6 +8,7 @@ import commands.profile.ChangeGoalsCommand;
 import commands.profile.ChangeHeightCommand;
 import commands.profile.ChangeWeightCommand;
 import commands.profile.GetStatusCommand;
+import commands.profile.HelpProfileCommand;
 import profile.Profile;
 
 public class CommandProfile extends CommandMap {
@@ -29,7 +30,7 @@ public class CommandProfile extends CommandMap {
         addToMap(CHANGE_HEIGHT, new ChangeHeightCommand(profile));
         addToMap(CHANGE_WEIGHT, new ChangeWeightCommand(profile));
         addToMap(CHANGE_GOALS, new ChangeGoalsCommand(profile));
-        addToMap(HELP, new HelpExerciseCommand());
+        addToMap(HELP, new HelpProfileCommand());
 
     }
 

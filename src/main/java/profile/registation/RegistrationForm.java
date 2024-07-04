@@ -60,7 +60,7 @@ public final class RegistrationForm {
 
         System.out.println("Now write your weight:");
         int weight = getIntFromStream();
-
+        scanner.nextLine();
         return new Anthropometry(height, weight);
     }
 

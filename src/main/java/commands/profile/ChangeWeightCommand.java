@@ -18,7 +18,7 @@ public class ChangeWeightCommand implements Command {
             System.out.println("Not enough arguments for changing weight.");
             return;
         }
-        profile.changeHeight(Integer.parseInt(args.get(0)));
+        profile.changeWeight(Integer.parseInt(args.get(0)));
     }
 }
 

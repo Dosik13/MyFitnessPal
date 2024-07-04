@@ -11,7 +11,7 @@ public enum Country {
     FINLAND("Finland"),
     POLAND("Poland"),
     ITALY("Italy"),
-    UNITED_KINGDOM("United Kingdom"),
+    UNITED_KINGDOM("United_Kingdom"),
     ROMANIA("Romania"),
     BELARUS("Belarus"),
     KAZAKHSTAN("Kazakhstan"),
