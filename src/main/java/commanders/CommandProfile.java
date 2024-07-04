@@ -3,7 +3,6 @@ package commanders;
 import java.util.List;
 
 import commands.Command;
-import commands.exercise.HelpExerciseCommand;
 import commands.profile.ChangeGoalsCommand;
 import commands.profile.ChangeHeightCommand;
 import commands.profile.ChangeWeightCommand;
