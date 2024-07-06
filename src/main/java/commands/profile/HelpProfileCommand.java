@@ -8,7 +8,7 @@ public class HelpProfileCommand implements Command {
     @Override
     public final void execute(List<String> args) {
         System.out.println("Available commands:");
-        System.out.println("get-status - Get status\n");
+        System.out.println("get-status - Get status");
         System.out.println("change-height - Change height\n"
             + "change-height <height>");
         System.out.println("change-weight - Change weight\n"

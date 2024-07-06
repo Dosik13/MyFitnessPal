@@ -54,6 +54,7 @@ public class CommandMenu {
 
     private void helpCommand() {
         System.out.println("Commands: ");
+        System.out.println("profile - Profile commands");
         System.out.println("exercises - Exercise commands");
         System.out.println("food - Food commands");
         System.out.println("water - Water commands");
