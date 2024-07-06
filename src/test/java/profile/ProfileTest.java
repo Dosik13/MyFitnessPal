@@ -75,7 +75,7 @@ public class ProfileTest {
 
     @Test
     void testGoalsPrint() {
-        assertEquals("Weight Gain", profile.getGoals().get(0).toString(),
+        assertEquals(Goal.getFromString("weight_gain").toString(), profile.getGoals().get(0).toString(),
             "It was expected to write the right goal");
     }
 }

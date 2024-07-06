@@ -12,6 +12,7 @@ public class CommandMenu {
     private final Scanner scanner;
     static final String BACK = "back";
     static final String EXIT = "exit";
+    static final String HELP = "help";
 
     public CommandMenu(Scanner scanner, Map<String, Command> commandMap) {
         this.commandMap = commandMap;
@@ -28,6 +29,12 @@ public class CommandMenu {
                     System.out.println("Exiting the program!");
                     break;
                 }
+
+                if (command.equalsIgnoreCase(HELP)) {
+                    helpCommand();
+                    continue;
+                }
+
                 cmd = commandMap.get(command.toLowerCase());
                 if (cmd == null) {
                     System.out.println("Invalid engine");
@@ -43,5 +50,14 @@ public class CommandMenu {
                 cmd.execute(output);
             }
         }
+    }
+
+    private void helpCommand() {
+        System.out.println("Commands: ");
+        System.out.println("exercises - Exercise commands");
+        System.out.println("food - Food commands");
+        System.out.println("water - Water commands");
+        System.out.println("help - Show all commands");
+        System.out.println("exit - Exit the program");
     }
 }
